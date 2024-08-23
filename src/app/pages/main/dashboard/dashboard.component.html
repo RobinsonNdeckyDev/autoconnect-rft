@@ -1,0 +1,62 @@
+<div class="wrapper m-0 d-flex">
+
+    <!-- Sidebar -->
+    <div class="sidebar p-0" [ngClass]="{'collapsed': !isSidebarVisible}">
+        <aside>
+            <div class="logoWrapper mt-2">
+                <div class="logo">
+                    <!-- <a routerLink="/app/accueil-stock"><img src="/assets/logo/logo-innovtech.png" alt=""></a> -->
+                    <strong class="text-center text-white mx-2" *ngIf="isSidebarVisible">Auto-connect</strong>
+                </div>
+            </div>
+            <nav>
+                <ul class="navItem">
+                    <!-- @for (item of menus; track $index) {
+                    <a routerLink="{{ item.route }}" routerLinkActive="ActiveMenu"
+                        [routerLinkActiveOptions]="{ exact: true }">
+                        <li><i [class]="item.icon"></i><span *ngIf="isSidebarVisible">{{ item.title }}</span></li>
+                    </a>
+                    } -->
+                </ul>
+            </nav>
+        </aside>
+    </div>
+
+    <!-- Main -->
+    <main class="main" [ngClass]="{'expanded': !isSidebarVisible}">
+
+        <!-- L'entéte -->
+        <app-navbar (toggleSidebarEvent)="toggleSidebar()"></app-navbar>
+
+        <!-- Contenu principal -->
+        <div class="mainContainer">
+            <router-outlet></router-outlet>
+        </div>
+    </main>
+</div>
+
+
+
+
+
+<!-- Sidebar Flottant -->
+<div class="sidebarWrapper" [ngClass]="{'show-sidebar': !isSidebarVisible, 'hide-sidebar': isSidebarVisible}">
+    <div class="logoWrapper">
+        <div class="logoSide d-flex justify-content-center">
+            <strong class="text-center text-white pt-4">Auto-connect</strong>
+        </div>
+        <span class="text-pointer closeSidebar" (click)="toggleSidebar()">
+            <i class="bi bi-x-circle"></i>
+        </span>
+    </div>
+    <nav class="mx-auto">
+        <ul class="navItemBar mx-auto">
+            <!-- @for (item of menus; track $index) {
+            <a class="text-white text-decoration-none" routerLink="{{ item.route }}" routerLinkActive="ActiveMenu"
+                [routerLinkActiveOptions]="{ exact: true }" (click)="closeSidebar()">
+                <li class="list-unstyled font-weight-bold"><i [class]="item.icon" class="mx-2"></i>{{ item.title }}</li>
+            </a>
+            } -->
+        </ul>
+    </nav>
+</div>
